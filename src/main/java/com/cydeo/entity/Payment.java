@@ -30,8 +30,11 @@ public class Payment {
     private Status paymentStatus;
 
 
-
-    @OneToOne
+    //Cascading used not so much
+    //@OneToOne(cascade = CascadeType.ALL)
+    //Whatever you do in the parent class "Payment" do same action inside the child"PaymentDetail"
+    //With Cascading, child table's fields will be created and filled before parent "payment table"
+    @OneToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     @JoinColumn(name = "payment_detail_id") // it means join, it is created foreign key inside the payment table
     private PaymentDetail paymentDetail;
 
