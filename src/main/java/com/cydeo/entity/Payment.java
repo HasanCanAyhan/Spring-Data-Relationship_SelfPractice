@@ -32,7 +32,7 @@ public class Payment {
 
 
     @OneToOne
-    @JoinColumn(name = "payment_detail_id")
+    @JoinColumn(name = "payment_detail_id") // it means join, it is created foreign key inside the payment table
     private PaymentDetail paymentDetail;
 
 
