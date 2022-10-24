@@ -34,6 +34,10 @@ public class PaymentDetail {
     unidirectional : one
      */
 
+    @OneToOne(mappedBy = "paymentDetail") // not creating foreign key "payment_id" inside the paymentdetail table
+    private Payment payment;
+
+
     public PaymentDetail(BigDecimal merchantPayoutAmount, BigDecimal comissionAmount, LocalDate payoutDate) {
         this.merchantPayoutAmount = merchantPayoutAmount;
         this.comissionAmount = comissionAmount;
