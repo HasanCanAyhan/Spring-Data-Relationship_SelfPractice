@@ -30,7 +30,7 @@ public class Merchant {
     private List<Payment> paymentList;
     // not creating merchant_payment_list as another table and
     // not creating foreign key "payment_id" inside the merchant table
-    // if we comment out line 29-30, then unit-directional and we can not call payment object inside the merchant
+    // now it is bi-directional, but if we comment out line 29-30, then it is unit-directional and we can not call payment object inside the merchant
     // If we want to call payment inside the merchant, then you can do this, based on business logic
 
 
