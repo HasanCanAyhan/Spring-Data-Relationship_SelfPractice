@@ -29,7 +29,9 @@ public class Merchant {
     @OneToMany(mappedBy = "merchant")
     private List<Payment> paymentList;
     // not creating merchant_payment_list as another table and
-    // not creating foreign key merchant_id and "payment_id" inside the merchant_payment_list  table
+    // not creating foreign key "payment_id" inside the merchant table
+    // if we comment out line 29-30, then unit-directional and we can not call payment object inside the merchant
+    // If we want to call payment inside the merchant, then you can do this, based on business logic
 
 
     public Merchant(String name, String code, BigDecimal transactionFee, BigDecimal comissionRate, Integer payoutDelayCount) {
