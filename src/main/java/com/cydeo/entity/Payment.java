@@ -38,7 +38,12 @@ public class Payment {
     @JoinColumn(name = "payment_detail_id") // it means join, it is created foreign key inside the payment table
     private PaymentDetail paymentDetail;
 
+    //-----------------------------------------------
 
+    //Many payments one merchant
+    @ManyToOne
+    private Merchant merchant;
+    //1.created merchant_id as foreign_key in the payment table
 
 
     public Payment(LocalDate createdDate, BigDecimal amount, Status paymentStatus) {
