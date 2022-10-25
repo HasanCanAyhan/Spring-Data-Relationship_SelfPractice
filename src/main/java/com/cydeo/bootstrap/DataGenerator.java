@@ -1,8 +1,6 @@
 package com.cydeo.bootstrap;
 
-import com.cydeo.entity.Merchant;
-import com.cydeo.entity.Payment;
-import com.cydeo.entity.PaymentDetail;
+import com.cydeo.entity.*;
 import com.cydeo.enums.Status;
 import com.cydeo.repository.MerchantRepository;
 import com.cydeo.repository.PaymentRepository;
@@ -11,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Arrays;
 
 @Component
 public class DataGenerator implements CommandLineRunner {
@@ -57,6 +56,18 @@ public class DataGenerator implements CommandLineRunner {
 
         //System.out.println(paymentRepository.findById(2L).get().getPaymentDetail().getComissionAmount());
         //paymentRepository.delete(payment1);
+
+
+        Item item1 = new Item("Milk","M01");
+        Item item2 = new Item("Sugar","S01");
+        Item item3 = new Item("Bread","B01");
+
+        Cart cart1 = new Cart();
+        Cart cart2 = new Cart();
+
+        cart1.setItemList(Arrays.asList(item1,item2,item3));
+        cart2.setItemList(Arrays.asList(item1,item2));
+
 
 
 
