@@ -40,6 +40,7 @@ public class Payment {
 
     //-----------------------------------------------
 
+
     //Many payments one merchant
     @ManyToOne
     private Merchant merchant;
