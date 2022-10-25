@@ -2,10 +2,7 @@ package com.cydeo.bootstrap;
 
 import com.cydeo.entity.*;
 import com.cydeo.enums.Status;
-import com.cydeo.repository.CartRepository;
-import com.cydeo.repository.ItemRepository;
-import com.cydeo.repository.MerchantRepository;
-import com.cydeo.repository.PaymentRepository;
+import com.cydeo.repository.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -23,11 +20,14 @@ public class DataGenerator implements CommandLineRunner {
     private final ItemRepository itemRepository;
     private final CartRepository cartRepository;
 
-    public DataGenerator(PaymentRepository paymentRepository, MerchantRepository merchantRepository, ItemRepository itemRepository, CartRepository cartRepository) {
+    private final CustomerRepository customerRepository;
+
+    public DataGenerator(PaymentRepository paymentRepository, MerchantRepository merchantRepository, ItemRepository itemRepository, CartRepository cartRepository, CustomerRepository customerRepository) {
         this.paymentRepository = paymentRepository;
         this.merchantRepository = merchantRepository;
         this.itemRepository = itemRepository;
         this.cartRepository = cartRepository;
+        this.customerRepository = customerRepository;
     }
 
 
@@ -54,14 +54,15 @@ public class DataGenerator implements CommandLineRunner {
 
         merchantRepository.save(merchant1);//amazon
 
-        //paymentDetailRepository.save(paymentDetail1)
-        //paymentDetailRepository.save(paymentDetail2)
 
-        paymentRepository.save(payment1);
-        paymentRepository.save(payment2);
+        Customer customer1 = new Customer("Bensheim","can@gmail.com","Can","John","can_john");
+        Customer customer2 = new Customer("Schwarzwaldstraße","lila@gmail.com","Lusiela","Brazil","lcy_bra");
 
-        //System.out.println(paymentRepository.findById(2L).get().getPaymentDetail().getComissionAmount());
-        //paymentRepository.delete(payment1);
+        payment1.setCustomer(customer1);
+        payment2.setCustomer(customer2);
+
+        customerRepository.save(customer1);
+        customerRepository.save(customer2);
 
 
         Item item1 = new Item("Milk","M01");
@@ -81,6 +82,24 @@ public class DataGenerator implements CommandLineRunner {
 
         cartRepository.save(cart1);
         cartRepository.save(cart2);
+
+
+        payment1.setCart(cart1);
+        payment2.setCart(cart2);
+
+        //paymentDetailRepository.save(paymentDetail1)
+        //paymentDetailRepository.save(paymentDetail2)
+
+        paymentRepository.save(payment1);
+        paymentRepository.save(payment2);
+
+        //System.out.println(paymentRepository.findById(2L).get().getPaymentDetail().getComissionAmount());
+        //paymentRepository.delete(payment1);
+
+
+
+
+
 
 
     }

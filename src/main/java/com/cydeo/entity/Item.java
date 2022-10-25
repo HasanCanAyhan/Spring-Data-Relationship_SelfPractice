@@ -23,6 +23,10 @@ public class Item {
 
     @ManyToMany(mappedBy = "itemList")
     private List<Cart> carts;
+    //it will be created second join table
+    //I dont want to see , one join table enough
+    //That's why I drop the table "ite_cart_list " by using mapped by
+    //It is bi-directional
 
 
 

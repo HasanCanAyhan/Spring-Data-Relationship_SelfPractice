@@ -46,6 +46,22 @@ public class Payment {
     private Merchant merchant;
     //1.created merchant_id as foreign_key in the payment table
 
+    //-----------------------------------------------
+
+    //ManyToOne
+    //Payment-Customers
+
+    @ManyToOne
+    private Customer customer;
+
+    //-----------------------------------------------
+
+    //OneToOne
+    //Payment-Cart
+
+    @OneToOne
+    private Cart cart;
+
 
     public Payment(LocalDate createdDate, BigDecimal amount, Status paymentStatus) {
         this.createdDate = createdDate;
